@@ -1,7 +1,6 @@
 import socket
 
 my_str = ('Hello, world!'.encode())
-print(my_str)
 
 sock = socket.socket()
 sock.connect(('localhost', 9090))
