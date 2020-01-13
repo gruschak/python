@@ -1,7 +1,6 @@
 ﻿import socket
 from select import select
 
-SRV_ADDR = ('127.0.0.1', 5050)
 SRV_ADDR = ('127.0.0.1', 5051)
 to_monitor = []
 
