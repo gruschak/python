@@ -1,8 +1,8 @@
-import socket
+﻿import socket
 from select import select
 
 SRV_ADDR = ('127.0.0.1', 5050)
-# SRV_PORT = 5050
+SRV_ADDR = ('127.0.0.1', 5051)
 to_monitor = []
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
