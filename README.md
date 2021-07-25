@@ -1,2 +1,2 @@
 # python
-Python projects
+My Python samples
