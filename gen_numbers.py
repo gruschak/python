@@ -1,16 +1,23 @@
-def gen_numbers(n: int, prefix=None):
+RADIX = 16  # Must not be greater than 16
+LENGTH = 3  # Number of digits of the generated numbers
+
+
+def generate_numbers(radix: int, n: int, prefix: list = None):
     """ Генерирует список всех чисел BASE-ричной системы счисления,
         имеющих n разрядов
     """
-    BASE = 10    # основание системы счисления = 2
+    if radix > 16:
+        raise ValueError("Radix must not be greater than 16")
+
     prefix = prefix or []
-    if (n == 0):
+    if n == 0:
         print(*prefix)
     else:
-        for digit in range(BASE):
-            prefix.append(digit)
-            gen_numbers(n - 1, prefix)
+        for digit in range(radix):
+            prefix.append(hex(digit)[2:].upper() if 9 < digit < 16 else digit)
+            generate_numbers(radix, n - 1, prefix)
             prefix.pop()
 
 
-gen_numbers(2)
+if __name__ == '__main__':
+    generate_numbers(radix=RADIX, n=LENGTH)
