@@ -1,23 +1,32 @@
+"""
+This program is an example of recurrent algorithm usage.
+
+Task: Generate and print the numbers of the given radix
+having the given length (number of digits) in its numeric representation.
+"""
+
 RADIX = 16  # Must not be greater than 16
-LENGTH = 3  # Number of digits of the generated numbers
+LENGTH = 4  # Number of digits of the generated numbers
 
 
-def generate_numbers(radix: int, n: int, prefix: list = None):
-    """ Генерирует список всех чисел BASE-ричной системы счисления,
-        имеющих n разрядов
+def generate_numbers(radix: int, tail_length: int, prefix: list = None):
+    """ Generate numbers of the given radix
+    :param radix: base number of the positional numeral system
+    :param tail_length: number of digits to generate
+    :param prefix: the given list of digits that compose a prefix for a number representation
     """
-    if radix > 16:
-        raise ValueError("Radix must not be greater than 16")
+    if not (1 < radix < 17):
+        raise ValueError("Radix must be between 2 and 16")
 
     prefix = prefix or []
-    if n == 0:
+    if tail_length == 0:
         print(*prefix)
     else:
         for digit in range(radix):
-            prefix.append(hex(digit)[2:].upper() if 9 < digit < 16 else digit)
-            generate_numbers(radix, n - 1, prefix)
+            prefix.append(hex(digit)[2:].upper())
+            generate_numbers(radix, tail_length - 1, prefix)
             prefix.pop()
 
 
 if __name__ == '__main__':
-    generate_numbers(radix=RADIX, n=LENGTH)
+    generate_numbers(radix=RADIX, tail_length=LENGTH)
