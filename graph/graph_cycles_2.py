@@ -81,4 +81,4 @@ if __name__ == '__main__':
     if cycle:
         print(f'The Graph has a Cycle: {cycle}')
     else:
-        print(f'The Graph has no Cycles: {cycle}')
+        print(f'The Graph has no Cycles')
