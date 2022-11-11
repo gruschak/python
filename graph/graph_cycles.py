@@ -2,7 +2,7 @@ from enum import Enum
 from pathlib import Path
 from typing import Any
 
-DATA_FILE = Path.home() / 'tmp/input.txt'
+DATA_FILE = Path.home() / 'projects/python/graph/graph_data.txt'
 
 
 class Graph(dict):
