@@ -16,8 +16,8 @@ class Graph(dict):
         """ Read a graph from the text file.
         A data in the first line must be
         a number of graph edges to read.
-        The rest lines must have pairs of vertexes like
-        A B - that means an arrow from A to B.
+        The rest lines must have pairs of vertexes:
+        pair A B means an arrow from A to B.
         """
         with open(file_name) as f:
             total_edges = int(f.readline())
@@ -29,7 +29,7 @@ class Graph(dict):
                     self[a] = [b]
 
     def vertexes(self) -> set:
-        """ Return all vertexes of the graph """
+        """ Return a set of all vertexes of the graph """
         all_vertexes = set()
         for k, v in self.items():
             all_vertexes |= {k} | set(v)
@@ -43,7 +43,8 @@ class Graph(dict):
         current_path = []
 
         def cycle_dfs(vertex) -> bool:
-            """ Depth-first search for a cycle in the graph starting from the given vertex
+            """ Depth-first search for a cycle in the graph
+            starting from the given vertex
             :param vertex: a vertex to start from
             :return: True if any cycle is found else False
             """
@@ -73,8 +74,9 @@ if __name__ == '__main__':
     graph = Graph()
     graph.read(file_name=DATA_FILE)
     cycle = graph.find_cycle()
+
     print(f'{graph=}')
     if cycle:
-        print(f'The Graph has a Cycle: {cycle}')
+        print(f'The Graph has a Cycle: ({" -> ".join(cycle)})')
     else:
         print(f'The Graph has no Cycles')
