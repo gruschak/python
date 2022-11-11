@@ -60,7 +60,7 @@ def check_graph_for_cycles(data_file) -> tuple[Graph, list]:
             if cycle_dfs(g, neighbour):
                 return True
 
-        current_path.remove(vertex)
+        current_path.pop()  # we may use also .remove(vertex)
         return False
 
     #
