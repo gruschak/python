@@ -16,8 +16,8 @@ class Graph(dict):
         """ Read a graph from the text file.
         A data in the first line must be
         a number of graph edges to read.
-        The rest lines must have pairs of vertexes:
-        pair A B means an arrow from A to B.
+        The rest of the lines must each be a pair of vertexes:
+        string A B means an arrow from A to B.
         """
         with open(file_name) as f:
             total_edges = int(f.readline())
